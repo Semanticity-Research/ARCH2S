@@ -11,13 +11,14 @@ ARCH2S: A Dataset and Benchmark for Learning Exterior Architetural Strutures
 <!-- **Pointcept** is a powerful and flexible codebase for point cloud perception research. It is also an official implementation of the following paper: -->
 **ARCH2S** is a semantically-enriched, photo-realistic 3D architectural models dataset and benchmark for semantic segmentation. 
 
-Our preprocess data are available and can also be downloaded by filling the
+Our preprocess data are available and can also be downloaded by filling in the
 [Google Form](https://forms.gle/ADCLHHxHwtbaAsxR9)
 
 
 ## Highlights
-<!-- - *April, 2023*: **ARCH2S** Paper is accepted by **CVPRW 2024** -->
-- *March, 2024*: **ARCH2S** repo is created, the dataset, paper and full code will be released soon.
+- *April*, 2024*: **ARCH2S** Dataset request form is created.
+- *April, 2024*: **ARCH2S** Paper is accepted by **CVPRW 2024**
+- *March 2024*: **ARCH2S** repo is created; the dataset, paper, and full code will be released soon.
 - *March, 2024*: **ARCH2S** Uploads the semantic views with “Beam” and “Ceiling” labels from our [ARCH2S models](img/add_view_arch2s_model.png)
 ## Overview
 - [TODO](#todo)
@@ -32,10 +33,8 @@ Our preprocess data are available and can also be downloaded by filling the
 - [✔] Initial create the repo 
 - [✔] dataset, benchmark and code preview for ARCH2S
 - [✔] download link for the raw data of ARCH2S dataset.
-- [ ] Paper, dataset, benchmark and full code for ARCH2S
+- [✔] Paper, dataset, benchmark and full code for ARCH2S
 <!-- - [ ] BIM Models from ARCH2S -->
-- [ ] Configs for trained segmentation models (ARCH2S)
-- [ ] Pretrained models for ARCH2S
 <!-- [![ARCH2S Model](img/add_view_arch2s_model.png)](img/add_view_arch2s_model.png) -->
 
 ## Installation
@@ -201,10 +200,11 @@ Model_1, Model_2, Model_3, Ours, (a), (b)
 If you find this project useful in your research, please consider cite:
 
 ```latex
-@misc{arch2s2024,
-    title={ARCH2S: Dataset and Benchmark for Learning Exterior Architetural Strutures},
-    author={RCH2S Contributors},
-    howpublished = {\url{https://github.com/AnyProgrammer/ARCH2S}},
-    year={2024}
+@article{cheung2024arch2s,
+  title={ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds},
+  author={Cheung, Ka Lung and Lee, Chi Chung},
+  journal={arXiv preprint arXiv:2406.01337},
+  year={2024}
+}
 }
 ```
