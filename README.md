@@ -14,7 +14,7 @@ ARCH2S: A Dataset and Benchmark for Learning Exterior Architetural Strutures
 Our preprocess data are available and can also be downloaded by filling in the
 [Google Form](https://forms.gle/ADCLHHxHwtbaAsxR9)
 
-![Teaser](arch2s_teaser.png")
+![Teaser](arch2s-teaser.png")
 
 ## Highlights
 - *April*, 2024*: **ARCH2S** Dataset request form is created.
