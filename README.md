@@ -201,11 +201,13 @@ Model_1, Model_2, Model_3, Ours, (a), (b)
 If you find this project useful in your research, please consider cite:
 
 ```latex
-@article{cheung2024arch2s,
-  title={ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds},
-  author={Cheung, Ka Lung and Lee, Chi Chung},
-  journal={arXiv preprint arXiv:2406.01337},
-  year={2024}
-}
+@misc{cheung2024arch2sdatasetbenchmarkchallenges,
+      title={ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds}, 
+      author={Ka Lung Cheung and Chi Chung Lee},
+      year={2024},
+      eprint={2406.01337},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2406.01337}, 
 }
 ```
