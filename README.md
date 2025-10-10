@@ -104,7 +104,7 @@ pip install open3d
 
 ## Data Preparation
 
-### Our dataset and benchmark(To be released soon)
+### Our dataset and benchmark
 <!-- The link for raw FBX Models (open Landsacpe ). Optionally,can also be downloaded [[here](https://drive.google.com/drive/folders/1dF1WHWCpI4NJpkJBm4jStjLFcSBzH6Ep?usp=sharing)] -->
 
 How we  prepare the dataset:
