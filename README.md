@@ -1,42 +1,37 @@
 <!-- <p align="center">
-ARCH2S: A Dataset and Benchmark for Learning Exterior Architetural Strutures
+ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds
 </p> -->
+<!-- <p align="center" style="font-size:1.6em;"><em>ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds</em></p> -->
 
-
-<p align="center" style="font-size:1.6em;"><em>ARCH2S: Dataset and Benchmark for Learning Exterior Architetural Strutures</em></p>
-
-
-
-<!-- #  ARCH2S: Dataset and Benchmark for Learning Exterior Architetural Strutures -->
+# ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds
 <!-- **Pointcept** is a powerful and flexible codebase for point cloud perception research. It is also an official implementation of the following paper: -->
-**ARCH2S** is a semantically-enriched, photo-realistic 3D architectural models dataset and benchmark for semantic segmentation. 
-
-Our preprocess data are available and can also be downloaded by filling in the
+**ARCH2S** is a dataset and benchmark repo for learning exterior architectural structures from point clouds. Part of the results and demo can be found in the 
+[Google Drive](https://drive.google.com/drive/folders/1Bl5Yx6oPL7om46EqePVFuLEOq_JDVCyJ?usp=sharing). Our preprocess data are availiable and can also be downloaded by filling the
 [Google Form](https://forms.gle/ADCLHHxHwtbaAsxR9)
 
-<!-- ![Teaser](arch2s-teaser.png)-->
-
 ## Highlights
-- *April*, 2024*: **ARCH2S** Dataset request form is created.
-- *April, 2024*: **ARCH2S** Paper is accepted by **CVPRW 2024**
-- *March 2024*: **ARCH2S** repo is created; the dataset, paper, and full code will be released soon.
-- *March, 2024*: **ARCH2S** Uploads the semantic views with “Beam” and “Ceiling” labels from our [ARCH2S models](img/add_view_arch2s_model.png)
+- *May, 2024*: Our paper is accepted by CVPRW'24!
+
 ## Overview
 - [TODO](#todo)
 - [Installation](#installation)
 - [Data Preparation](#data-preparation)
 - [Quick Start](#quick-start)
-- [Model Zoo](#model-zoo)
-- [Citation](#citation)
+<!-- - [Model Zoo](#model-zoo) -->
+- [Results](#results)
 - [Acknowledgement](#acknowledgement)
+- [Citation](#citation)
 
 ## TODO
 - [✔] Initial create the repo 
-- [✔] dataset, benchmark and code preview for ARCH2S
-- [✔] download link for the raw data of ARCH2S dataset.
-- [✔] Paper, dataset, benchmark and full code for ARCH2S
-<!-- - [ ] BIM Models from ARCH2S -->
-<!-- [![ARCH2S Model](img/add_view_arch2s_model.png)](img/add_view_arch2s_model.png) -->
+- [✔] dataset and code preview for SRBIM
+- [✔] download link for the raw data of SRBIM dataset.
+- [✔] config for the SRBIM segmentation model training with S3DIS dataset.
+<!--  - [ ] Paper, dataset and full code for SRBIM
+- [ ] BIM Models from SRBIM
+- [ ] Configs for trained segmentation models(SRBIM)
+- [ ] Pretrained models for SRBIM  -->
+
 
 ## Installation
 
@@ -51,8 +46,8 @@ Our preprocess data are available and can also be downloaded by filling in the
 ### Conda Environment
 
 ```bash
-conda create -n ARCH2S python=3.9.18 -y
-conda activate ARCH2S
+conda create -n SRBIM python=3.9.18 -y
+conda activate SRBIM
 conda install ninja -y
 # Choose version you want here: https://pytorch.org/get-started/previous-versions/
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.6-c pytorch -y
@@ -78,12 +73,12 @@ cd ../..
 # Open3D
 pip install open3d
 ```
-<!-- #### Our codebase structure is as follows:
+#### Our codebase structure is as follows:
 ```bash
 /s2b
 ├── code_timer.py
 ├── config
-│   ├── config_ARCH2S_public_services.yaml
+│   ├── config_SRBIM_public_services.yaml
     ├── ... (more files)
 ├── entity_create.py
 ├── entity_search.py
@@ -93,46 +88,123 @@ pip install open3d
 │   │   ├── ... (more files)
 ├── ifc_label_map.py
 ├── scripts
-│   └── ARCH2S_main.sh
-├── ARCH2S_main.py
+│   └── SRBIM_main.sh
+├── SRBIM_main.py
 └── utils
     ├── label_list.py
     ├── parse_yaml.py
     ├── pcd_Loader.py
     ├── pcd_Processor.py
-``` -->
+```
 
 ## Data Preparation
 
-### Our dataset and benchmark
+### Our Dataset (To be released soon)
 <!-- The link for raw FBX Models (open Landsacpe ). Optionally,can also be downloaded [[here](https://drive.google.com/drive/folders/1dF1WHWCpI4NJpkJBm4jStjLFcSBzH6Ep?usp=sharing)] -->
 
 How we  prepare the dataset:
-- Mining the data from the raw FBX models and convert it to point cloud data.
+- Mining the data from the raw FBX Model (open Landsacpe ) and convert it to point cloud data.
 - Texture mapping and colorization of the mesh with the .jpg file.
 - Sampling the point cloud (5M) data from the mesh .
 - Labeling the point cloud data with the semantic label.
  
-<!-- Download our dataset and benchmark(To be released soon) and unzip it.
+Download our dataset and unzip it.
 ```
-# ARCH2S_DIR: the directory of downloaded ARCH2S dataset.
-# RAW_ARCH2S_DIR: the directory of ARCH2S dataset.
-# PROCESSED_ARCH2S_DIR: the directory of processed ARCH2S dataset and benchmark(output dir).
+# SRBIM_DIR: the directory of downloaded SRBIM dataset.
+# RAW_SRBIM_DIR: the directory of SRBIM dataset.
+# PROCESSED_SRBIM_DIR: the directory of processed SRBIM dataset (output dir).
 
-# ARCH2S
-python pointcept/datasets/preprocessing/ARCH2S/preprocess_ARCH2S.py --dataset_root ${ARCH2S_DIR} --output_root ${PROCESSED_ARCH2S_DIR}
+# SRBIM
+python pointcept/datasets/preprocessing/SRBIM/preprocess_SRBIM.py --dataset_root ${SRBIM_DIR} --output_root ${PROCESSED_SRBIM_DIR}
 ```
-- Link processed dataset and benchmarkto codebase.
+- Link processed dataset to codebase.
 ```
-mkdir data/ARCH2S
-ln -s ${PROCESSED_ARCH2S_DIR} ${CODEBASE_DIR}/data/ARCH2S
-``` -->
+mkdir data/SRBIM
+ln -s ${PROCESSED_SRBIM_DIR} ${CODEBASE_DIR}/data/SRBIM
+```
 
-<!-- ## Quick Start
+### S3DIS
+
+- Download S3DIS data and unzip `Stanford3dDataset_v1.2.zip` file
+- Run preprocessing code for S3DIS as follows:
+
+```bash
+# S3DIS_DIR: the directory of downloaded Stanford3dDataset_v1.2 dataset.
+# RAW_S3DIS_DIR: the directory of Stanford2d3dDataset_noXYZ dataset. (optional, for parsing normal)
+# PROCESSED_S3DIS_DIR: the directory of processed S3DIS dataset (output dir).
+
+# S3DIS without aligned angle
+python pointcept/datasets/preprocessing/s3dis/preprocess_s3dis.py --dataset_root ${S3DIS_DIR} --output_root ${PROCESSED_S3DIS_DIR}
+# S3DIS with aligned angle
+python pointcept/datasets/preprocessing/s3dis/preprocess_s3dis.py --dataset_root ${S3DIS_DIR} --output_root ${PROCESSED_S3DIS_DIR} --align_angle
+# S3DIS with normal vector (recommended, normal is helpful)
+python pointcept/datasets/preprocessing/s3dis/preprocess_s3dis.py --dataset_root ${S3DIS_DIR} --output_root ${PROCESSED_S3DIS_DIR} --raw_root ${RAW_S3DIS_DIR} --parse_normal
+python pointcept/datasets/preprocessing/s3dis/preprocess_s3dis.py --dataset_root ${S3DIS_DIR} --output_root ${PROCESSED_S3DIS_DIR} --raw_root ${RAW_S3DIS_DIR} --align_angle --parse_normal
+```
+
+
+- Link processed dataset to codebase.
+```bash
+# PROCESSED_S3DIS_DIR: the directory of processed S3DIS dataset.
+mkdir data
+ln -s ${PROCESSED_S3DIS_DIR} ${CODEBASE_DIR}/data/s3dis
+```
+## SensatUrban
+### Download the dataset
+Download the files named "data_release.zip" here. Uncompress the folder and move it to /data/SensatUrban.
+
+
+Preparing the dataset
+``` bash
+python input_preparation.py --dataset_path $YOURPATH
+cd $YOURPATH; 
+cd ../; mkdir original_block_ply; mv data_release/train/* original_block_ply; mv data_release/test/* original_block_ply;
+mv data_release/grid* ./
+```
+The data should organized in the following format:
+```bash
+/data/SensatUrban/
+          └── original_block_ply/
+                  ├── birmingham_block_0.ply
+                  ├── birmingham_block_1.ply 
+		  ...
+	    	  └── cambridge_block_34.ply 
+          └── grid_0.200/
+	     	  ├── birmingham_block_0_KDTree.pkl
+                  ├── birmingham_block_0.ply
+		  ├── birmingham_block_0_proj.pkl 
+		  ...
+	    	  └── cambridge_block_34.ply 
+```
+
+
+### BuildingNet
+
+- Download BuildingNet data and unzip `POINT_CLOUDS.zip` file
+- Run preprocessing code for BuildingNet as follows:
+
+```bash
+# BuildingNet_DIR: the directory of downloaded POINT_CLOUDS dataset.
+# RAW_BuildingNet_DIR: the directory of Stanford2d3dDataset_noXYZ dataset. 
+# PROCESSED_BuildingNet_DIR: the directory of processed BuildingNet dataset (output dir).
+
+# BuildingNet
+python pointcept/datasets/preprocessing/buildingNet/preprocess_buildingNet.py --dataset_root ${BuildingNet_DIR} --output_root ${PROCESSED_BuildingNet_DIR}
+# BuildingNet
+python pointcept/datasets/preprocessing/buildingNet/preprocess_buildingNet.py --dataset_root ${BuildingNet_DIR} 
+```
+
+- Link processed dataset to codebase.
+```bash
+# PROCESSED_S3DIS_DIR: the directory of processed S3DIS dataset.
+mkdir data
+ln -s ${PROCESSED_S3DIS_DIR} ${CODEBASE_DIR}/data/buildingNet
+```
+## Quick Start
 
 ### Running our Framework
 ```bash
-sh s2b/scripts/ARCH2S_main.sh
+sh s2b/scripts/SRBIM_main.sh
 ```
 
 ### Training the segmentation model
@@ -149,11 +221,11 @@ python tools/train.py --config-file ${CONFIG_PATH} --num-gpus ${NUM_GPU} --optio
 ```
 ```bash
 # S3DIS
-sh scripts/train.sh -g 2 -d s3dis -c semseg-pt-ARCH2S-v1m1-0-base -n semseg-pt-ARCH2S-v1m1-0-base
+sh scripts/train.sh -g 2 -d s3dis -c semseg-pt-srbim-v1m1-0-base -n semseg-pt-srbim-v1m1-0-base
 # SensatUrban
-sh scripts/train.sh -g 2 -d sensaturban -c semseg-pt-ARCH2S-v1m1-0-base -n semseg-pt-ARCH2S-v1m1-0-base
+sh scripts/train.sh -g 2 -d sensaturban -c semseg-pt-srbim-v1m1-0-base -n semseg-pt-srbim-v1m1-0-base
 # BuildingNet
-sh scripts/train.sh -g 2 -d buildingnet -c semseg-pt-ARCH2S-v1m1-0-base -n semseg-pt-ARCH2S-v1m1-0-base
+sh scripts/train.sh -g 2 -d buildingnet -c semseg-pt-srbim-v1m1-0-base -n semseg-pt-srbim-v1m1-0-base
 ```
 For example:
 ```bash
@@ -165,49 +237,50 @@ export PYTHONPATH=./
 python tools/train.py --config-file configs/scannet/semseg-pt-v2m2-0-base.py --options save_path=exp/scannet/semseg-pt-v2m2-0-base
 ```
 
+<!--
+## Model Zoo
+-->
 
+## Results
 
+#### Benchmark Results
+Quantitative results of five selected baselines on ARCH2S dataset:
 
-##  Results
+| Method | OA (%) | mAcc (%) | mIoU (%) | Others | Wall | Window | Door | Roof | Storefront | Ceiling | Floor | Beam | Stairs | Column | Fence | Vegetation | Garden |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| SpUNet | 30.98 | 14.80 | 6.45 | 0.79 | **21.75** | 24.66 | 0.00 | 24.77 | **32.18** | 0.00 | 0.00 | 0.00 | 0.00 | **18.03** | 0.00 | 0.00 | 0.00 |
+| MinkUNet | 32.31 | **15.28** | **7.39** | 0.00 | 20.43 | 7.50 | 0.00 | **38.98** | 13.45 | 0.00 | **60.01** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| PTv1 | **48.64** | 5.94 | 3.44 | **7.42** | 6.06 | **51.91** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| PTv2 | 18.50 | 7.95 | 3.16 | 0.00 | 18.72 | 0.94 | 0.00 | 0.00 | 16.84 | 0.00 | 23.57 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| PTv3 | 22.59 | 10.07 | 3.01 | 0.09 | 19.91 | 8.05 | 0.00 | 24.30 | 4.85 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
 
-#### BIM models
-Download example BIM model reconstructed by [here](https://forms.gle/) -->
-
-
-<!-- ## Model Zoo (To be released soon)
-
-<!-- ## Benchmark Results (To be released soon)
-<!-- | Method              | G | C | S3DIS mIoU (%) | S3DIS OA (%) | SensatUrban mIoU (%) | SensatUrban OA (%) | BuildingNet mIoU (%) | BuildingNet OA (%) |
-|---------------------|---|---|----------------|--------------|----------------------|--------------------|----------------------|--------------------|
-| Model_1         | ✔ | ✔ | -              | -            | -                    | -                  | -                    | -                  |
-| Model_2    | ✔ | ✔ | -              | -            | -                    | -                  | -                    | -                  |
-| Model_3       | ✔ | ✔ | -              | -            | -                    | -                  | -                    | -                  |
-| Model_4            | ✔ | ✔ | -              | -            | -                    | -                  | -                    | -                  |
-| Ours        | ✔ | ✔ | -              | -            | -                    | -                  | -                    | -                  |
-| Ours (a) | ✔ | ✔ | -            | -            | -                    | -                  | -                    | -                  |
-| Ours (b)  | ✔ | ✔ | -            | -            | -                    | -                  | -                    | -                  |
-| Ours (c)       | ✔ | ✔ | -            | -            | -                    | -                  | -                    | -                  |
-| Ours (d)  | ✔ | ✔ | -            | -            | -                    | -                  | -                    | -                  |
-| Ours (e)       | ✔ |  ✔  | -            | -            | -                    | -                  | -                    | -                  | -->
-
+> **Note**:
+> - Overall Accuracy (OA, %), mean class Accuracy (mAcc, %), mean IoU (mIoU, %), and per-class IoU (%) are reported.
+> - All baselines are trained from scratch without pre-trained weights.
 
 ## Acknowledgement
 
-<!-- #### Our benchmark results implemented the following excellent works:
+This project is built upon [Pointcept](https://github.com/Pointcept/Pointcept), a powerful and flexible codebase for point cloud perception research. We thank the authors for their great work and contribution to the open-source community.
 
-#### Model Backbone:
-Model_1, Model_2, Model_3, Ours, (a), (b)
+Our benchmark results and framework implemented and benefited from the following excellent works:
+
+#### Model Backbones:
+- **SpUNet**: [Spconv: Spatially Sparse Convolution Library](https://github.com/traveller59/spconv) | [Code](https://github.com/traveller59/spconv)
+- **MinkUNet**: [4D Spatio-Temporal ConvNets: Minkowski Convolutional Neural Networks](https://arxiv.org/abs/1904.08755) (CVPR 2019) | [Code](https://github.com/NVIDIA/MinkowskiEngine)
+- **PTv1**: [Point Transformer](https://arxiv.org/abs/2012.09164) (ICCV 2021) | [Code](https://github.com/POSTECH-CVLab/point-transformer)
+- **PTv2**: [Point Transformer V2: Grouped Vector Attention and Partition-based Pooling](https://arxiv.org/abs/2210.05666) (NeurIPS 2022) | [Code](https://github.com/Gus-Gao/PTv2)
+- **PTv3**: [Point Transformer V3: Simpler, Faster, Stronger](https://arxiv.org/abs/2312.10035) (CVPR 2024) | [Code](https://github.com/Pointcept/PointTransformerV3)
+
 ## Citation
-If you find this project useful in your research, please consider cite: -->
+If you find this project useful in your research, please consider citing:
 
 ```latex
-@misc{cheung2024arch2sdatasetbenchmarkchallenges,
-      title={ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds}, 
-      author={Ka Lung Cheung and Chi Chung Lee},
-      year={2024},
-      eprint={2406.01337},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2406.01337}, 
+@misc{cheung2024arch2s,
+    title={ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural Structures from Point Clouds},
+    author={Ka Lung Cheung and Chi Chung Lee},
+    year={2024},
+    eprint={2406.01337},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
 }
 ```
