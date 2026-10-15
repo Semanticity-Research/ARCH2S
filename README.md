@@ -17,9 +17,6 @@ ARCH2S: Dataset, Benchmark and Challenges for Learning Exterior Architectural St
 - [Installation](#installation)
 - [Data Preparation](#data-preparation)
 - [Quick Start](#quick-start)
-<!-- - [Model Zoo](#model-zoo) -->
-- [Results](#results)
-- [Acknowledgement](#acknowledgement)
 - [Citation](#citation)
 
 ## TODO
@@ -241,18 +238,6 @@ python tools/train.py --config-file configs/scannet/semseg-pt-v2m2-0-base.py --o
 ## Model Zoo
 -->
 
-## Acknowledgement
-
-This project is built upon [Pointcept](https://github.com/Pointcept/Pointcept), a powerful and flexible codebase for point cloud perception research. We thank the authors for their great work and contribution to the open-source community.
-
-Our benchmark results and framework implemented and benefited from the following excellent works:
-
-#### Model Backbones:
-- **SpUNet**: [Spconv: Spatially Sparse Convolution Library](https://github.com/traveller59/spconv) | [Code](https://github.com/traveller59/spconv)
-- **MinkUNet**: [4D Spatio-Temporal ConvNets: Minkowski Convolutional Neural Networks](https://arxiv.org/abs/1904.08755) (CVPR 2019) | [Code](https://github.com/NVIDIA/MinkowskiEngine)
-- **PTv1**: [Point Transformer](https://arxiv.org/abs/2012.09164) (ICCV 2021) | [Code](https://github.com/POSTECH-CVLab/point-transformer)
-- **PTv2**: [Point Transformer V2: Grouped Vector Attention and Partition-based Pooling](https://arxiv.org/abs/2210.05666) (NeurIPS 2022) | [Code](https://github.com/Gus-Gao/PTv2)
-- **PTv3**: [Point Transformer V3: Simpler, Faster, Stronger](https://arxiv.org/abs/2312.10035) (CVPR 2024) | [Code](https://github.com/Pointcept/PointTransformerV3)
 
 ## Citation
 If you find this project useful in your research, please consider citing:
