@@ -241,23 +241,6 @@ python tools/train.py --config-file configs/scannet/semseg-pt-v2m2-0-base.py --o
 ## Model Zoo
 -->
 
-## Results
-
-#### Benchmark Results
-Quantitative results of five selected baselines on ARCH2S dataset:
-
-| Method | OA (%) | mAcc (%) | mIoU (%) | Others | Wall | Window | Door | Roof | Storefront | Ceiling | Floor | Beam | Stairs | Column | Fence | Vegetation | Garden |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| SpUNet | 30.98 | 14.80 | 6.45 | 0.79 | **21.75** | 24.66 | 0.00 | 24.77 | **32.18** | 0.00 | 0.00 | 0.00 | 0.00 | **18.03** | 0.00 | 0.00 | 0.00 |
-| MinkUNet | 32.31 | **15.28** | **7.39** | 0.00 | 20.43 | 7.50 | 0.00 | **38.98** | 13.45 | 0.00 | **60.01** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| PTv1 | **48.64** | 5.94 | 3.44 | **7.42** | 6.06 | **51.91** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| PTv2 | 18.50 | 7.95 | 3.16 | 0.00 | 18.72 | 0.94 | 0.00 | 0.00 | 16.84 | 0.00 | 23.57 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| PTv3 | 22.59 | 10.07 | 3.01 | 0.09 | 19.91 | 8.05 | 0.00 | 24.30 | 4.85 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-
-> **Note**:
-> - Overall Accuracy (OA, %), mean class Accuracy (mAcc, %), mean IoU (mIoU, %), and per-class IoU (%) are reported.
-> - All baselines are trained from scratch without pre-trained weights.
-
 ## Acknowledgement
 
 This project is built upon [Pointcept](https://github.com/Pointcept/Pointcept), a powerful and flexible codebase for point cloud perception research. We thank the authors for their great work and contribution to the open-source community.
